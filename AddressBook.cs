@@ -48,6 +48,78 @@ namespace Address_Book_System
                 Console.WriteLine("City: " + contact.City);
                 Console.WriteLine("State: " + contact.State);
                 Console.WriteLine("Postal Code: " + contact.PostalCode);
+                Console.WriteLine();
+            }
+        }
+
+        public void UpdateContact()
+        {
+            Console.WriteLine("To update contact, Enter first name: ");
+            string name = Console.ReadLine();
+
+            foreach (var data in con)
+            {
+                if (con.Contains(data))
+                {
+                    if (data.FirstName == name)
+                    {
+                        Console.WriteLine("Name Exists.");
+
+                        Console.WriteLine("To Update Contact");
+                        Console.WriteLine("1. Last Name");
+                        Console.WriteLine("2. Email");
+                        Console.WriteLine("3. Phone number");
+                        Console.WriteLine("4. Address");
+                        Console.WriteLine("5. City");
+                        Console.WriteLine("6. State");
+                        Console.WriteLine("7. Postal Code");
+                        Console.Write("==>");
+                        int option = Convert.ToInt32(Console.ReadLine());
+
+                        switch (option)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter new Lastname: ");
+                                string lastName = Console.ReadLine();
+                                data.LastName = lastName;
+                                break;
+                            case 2: 
+                                Console.WriteLine("Enter new email: ");
+                                string email = Console.ReadLine();
+                                data.Email = email;
+                                break;
+                            case 3:
+                                Console.WriteLine("Enter new phone number: ");
+                                long phone = Convert.ToInt64(Console.ReadLine());
+                                data.PhoneNumber = phone;
+                                break;
+                            case 4:
+                                Console.WriteLine("Enter new address: ");
+                                string address = Console.ReadLine();
+                                data.Address = address;
+                                break;
+                            case 5:
+                                Console.WriteLine("Enter new city: ");
+                                string city = Console.ReadLine();
+                                data.City = city;
+                                break;
+                            case 6:
+                                Console.WriteLine("Enter new state: ");
+                                string state = Console.ReadLine();
+                                data.State = state;
+                                break;
+                            case 7:
+                                Console.WriteLine("Enter new postal code: ");
+                                long pincode = Convert.ToInt32(Console.ReadLine());
+                                data.PostalCode = pincode;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Name does not exists.");
+                    }
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Address_Book_System
 
             while (true)
             {
-                Console.WriteLine("Enter an option: ");
+                Console.WriteLine("\nEnter an option: ");
                 Console.WriteLine("1. Add Contact");
                 Console.WriteLine("2. Display Contact");
                 Console.WriteLine("3. Update Contact");
@@ -29,12 +29,14 @@ namespace Address_Book_System
                     case 2:
                         book.DisplayContact();
                         break;
+                    case 3: 
+                        book.UpdateContact(); 
+                        break;
                     default:
                         Console.WriteLine("Enter valid option.");
                         break;
                 }
             }
-
         }
     }
 }
