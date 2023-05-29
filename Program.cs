@@ -32,6 +32,12 @@ namespace Address_Book_System
                     case 3: 
                         book.UpdateContact(); 
                         break;
+                    case 4: 
+                        book.DeleteContact();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Enter valid option.");
                         break;

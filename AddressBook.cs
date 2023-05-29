@@ -122,5 +122,16 @@ namespace Address_Book_System
                 }
             }
         }
+
+        public void DeleteContact()
+        {
+            Console.WriteLine("To delete contact, Enter first name: ");
+            string name = Console.ReadLine();
+
+            var itemToRemove = con.Single(c => c.FirstName == name);
+            con.Remove(itemToRemove);
+
+        }
+
     }
 }
