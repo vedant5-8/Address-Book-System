@@ -26,6 +26,9 @@ namespace Address_Book_System
                     case 1:
                         book.AddContact();
                         break;
+                    case 2:
+                        book.DisplayContact();
+                        break;
                     default:
                         Console.WriteLine("Enter valid option.");
                         break;
