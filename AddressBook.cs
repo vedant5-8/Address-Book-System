@@ -12,7 +12,6 @@ namespace Address_Book_System
 
         public void AddContact()
         {
-
             Contact contact = new Contact();
 
             Console.WriteLine("Enter firstname: ");
