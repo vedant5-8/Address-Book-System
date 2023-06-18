@@ -4,13 +4,13 @@ namespace Address_Book_System
     internal class AddressBook
     {
 
-        Contact contact = new Contact();
         List<Contact> contactsList = new List<Contact>();
 
 
         public void AddContact()
         {
-            Console.WriteLine();
+            Contact contact = new Contact();
+
             Console.Write("Enter firstname: ");
             contact.FirstName = Console.ReadLine();
             Console.Write("Enter lastname: ");
