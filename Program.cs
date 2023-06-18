@@ -1,48 +1,13 @@
-﻿using System;
-
+﻿
 namespace Address_Book_System
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("----Welcome to Address Book System----");
-
-            AddressBook book = new AddressBook();
-
-            while (true)
-            {
-                Console.WriteLine("\nEnter an option: ");
-                Console.WriteLine("1. Add Contact");
-                Console.WriteLine("2. Display Contact");
-                Console.WriteLine("3. Update Contact");
-                Console.WriteLine("4. Delete Contact");
-                Console.WriteLine("5. Exit");
-                Console.Write("=> ");
-                int option = Convert.ToInt32(Console.ReadLine());
-
-                switch (option)
-                {
-                    case 1:
-                        book.AddContact();
-                        break;
-                    case 2:
-                        book.DisplayContact();
-                        break;
-                    case 3: 
-                        book.UpdateContact(); 
-                        break;
-                    case 4: 
-                        book.DeleteContact();
-                        break;
-                    case 5:
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        Console.WriteLine("Enter valid option.");
-                        break;
-                }
-            }
+            Console.ResetColor();
         }
     }
 }
