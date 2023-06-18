@@ -16,6 +16,7 @@ namespace Address_Book_System
                 Console.WriteLine("\nSelect an option: ");
                 Console.WriteLine("1. Add Contact");
                 Console.WriteLine("2. Display Contact");
+                Console.WriteLine("3. Edit Contact");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -27,6 +28,9 @@ namespace Address_Book_System
                         break;
                     case 2:
                         book.DisplayContact();
+                        break;
+                    case 3:
+                        book.EditExistingContact();
                         break;
                     case 0:
                         Environment.Exit(0);
