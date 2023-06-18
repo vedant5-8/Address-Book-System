@@ -3,10 +3,7 @@ namespace Address_Book_System
 {
     internal class AddressBook
     {
-
         List<Contact> contactsList = new List<Contact>();
-
-
         public void AddContact()
         {
             Contact contact = new Contact();
