@@ -51,7 +51,7 @@ namespace Address_Book_System
             Console.WriteLine("To edit contact, Enter first name: ");
             string name = Console.ReadLine();
 
-            foreach (var contact in contactsList)
+            foreach (Contact contact in contactsList)
             {
                 if (contactsList.Contains(contact))
                 {
@@ -59,7 +59,7 @@ namespace Address_Book_System
                     {
                         char input = 'y';
 
-                        while(Char.ToLower(input) == 'y')
+                        while(char.ToLower(input) == 'y')
                         {
                             Console.WriteLine("To Update Contact");
                             Console.WriteLine("1. Email");
@@ -115,5 +115,34 @@ namespace Address_Book_System
                 }
             }
         }
+
+        public void DeleteContact()
+        {
+            Console.WriteLine("To delete contact, Enter first name: ");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("Do you want to delete the contact? (y/N)");
+            char input = 'y';
+            input = Convert.ToChar(Console.ReadLine());
+
+            if (char.ToLower(input) == 'y')
+            {
+                foreach (var contact in contactsList)
+                {
+                    if (contact.FirstName == name)
+                    {
+                        contactsList.Remove(contact);
+                        Console.WriteLine("Contact deleted successfully");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Contact name not found ");
+                    }
+                }
+            }
+
+        }
+
     }
 }
