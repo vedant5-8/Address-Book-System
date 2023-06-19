@@ -3,7 +3,6 @@ namespace Address_Book_System
 {
     internal class AddressBook
     {
-        List<Contact> contactsList = new List<Contact>();
         Dictionary<string, Contact> addressBookDictonary = new Dictionary<string, Contact>();
         public void AddContact()
         {
@@ -26,13 +25,21 @@ namespace Address_Book_System
             Console.Write("Enter postalcode: ");
             contact.ZipCode = Convert.ToInt32(Console.ReadLine());
 
-            contactsList.Add(contact);
-            addressBookDictonary.Add(contact.FirstName, contact);
+            if (addressBookDictonary.ContainsKey(contact.Email))
+            {
+                Console.WriteLine("The contacts details are already in the collection.");
+            }
+            else
+            {
+                addressBookDictonary.Add(contact.Email, contact);
+                Console.WriteLine("{0}'s contact details are successfully added to the address book.", contact.FirstName);
+            }
 
         }
 
         public void DisplayContact()
         {
+
             if (addressBookDictonary.Count == 0)
             {
                 Console.WriteLine("The address book does not have any contacts.");
