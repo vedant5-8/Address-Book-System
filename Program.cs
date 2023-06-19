@@ -21,6 +21,7 @@ namespace Address_Book_System
                 Console.WriteLine("5. Delete Contact");
                 Console.WriteLine("6. Display Address Book");
                 Console.WriteLine("7. Search contancts by City");
+                Console.WriteLine("8. Search contancts by State");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -47,6 +48,9 @@ namespace Address_Book_System
                         break;
                     case 7:
                         controller.SearchByCity();
+                        break;
+                    case 8:
+                        controller.SearchByState();
                         break;
                     case 0:
                         Environment.Exit(0);

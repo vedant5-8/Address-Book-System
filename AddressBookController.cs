@@ -218,5 +218,23 @@ namespace Address_Book_System
             }
         }
 
+        // Search contact details by State name
+        public void SearchByState()
+        {
+            Console.WriteLine("Enter name of the state: ");
+            string state = Console.ReadLine();
+
+            foreach (Contact contact in contactsList.FindAll(c => c.State.Equals(state)))
+            {
+                Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                Console.WriteLine("Email: " + contact.Email);
+                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                Console.WriteLine("Address: " + contact.Address);
+                Console.WriteLine("City: " + contact.City);
+                Console.WriteLine("State: " + contact.State);
+                Console.WriteLine("Postal Code: " + contact.ZipCode);
+            }
+        }
+
     }
 }
