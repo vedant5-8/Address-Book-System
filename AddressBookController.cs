@@ -3,7 +3,7 @@ namespace Address_Book_System
 {
     internal class AddressBookController
     {
-        Dictionary<string, AddressBooks> addressBooks = new Dictionary<string, AddressBooks>();
+        List<AddressBooks> addressBooks = new List<AddressBooks>();
 
         List<Contact> contactsList = new List<Contact>();
 
@@ -15,15 +15,14 @@ namespace Address_Book_System
             Console.Write("Enter new Address Book name: ");
             book.AddressBookName = Console.ReadLine();
 
-            try
+            if (!addressBooks.Exists(p => p.AddressBookName == book.AddressBookName))
             {
-                addressBooks.Add(book.AddressBookName, book);
+                addressBooks.Add(book);
             }
-            catch (ArgumentException)
+            else
             {
-                Console.WriteLine(book.AddressBookName + " is already present in the collection.");
+                Console.WriteLine(book.AddressBookName + " is already exists in the collection.");
             }
-
         }
 
         // Display all address books
@@ -32,7 +31,7 @@ namespace Address_Book_System
             Console.WriteLine("Address Book Name: ");
             foreach (var books in addressBooks)
             {
-                Console.WriteLine(books.Value.AddressBookName);
+                Console.WriteLine(books.AddressBookName);
             }
         }
 
@@ -44,8 +43,7 @@ namespace Address_Book_System
 
             foreach (var addrBook in addressBooks)
             {
-
-                if (addrBook.Value.AddressBookName == addressB)
+                if (addrBook.AddressBookName == addressB)
                 {
                     Contact contact = new Contact();
 
@@ -68,9 +66,7 @@ namespace Address_Book_System
 
                     contactsList.Add(contact);
                 }
-
             }
-
         }
 
         // Display all contacts in the collection
