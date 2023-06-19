@@ -64,7 +64,18 @@ namespace Address_Book_System
                     Console.Write("Enter postalcode: ");
                     contact.ZipCode = Convert.ToInt32(Console.ReadLine());
 
-                    contactsList.Add(contact);
+                    if (!contactsList.Exists(
+                        p => p.FirstName == contact.FirstName && p.LastName == contact.LastName &&
+                        p.Email == contact.Email && p.PhoneNumber == contact.PhoneNumber &&
+                        p.Address == contact.Address && p.City == contact.City &&
+                        p.State == contact.State && p.ZipCode == contact.ZipCode))
+                    {
+                        contactsList.Add(contact);
+                    }
+                    else
+                    {
+                        Console.WriteLine("The contact details are already exists in the collection.");
+                    }
                 }
             }
         }
