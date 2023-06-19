@@ -9,15 +9,17 @@ namespace Address_Book_System
             Console.WriteLine("----Welcome to Address Book System----");
             Console.ResetColor();
 
-            AddressBook book = new AddressBook();
+            AddressBookController controller = new AddressBookController();
 
             while (true)
             {
                 Console.WriteLine("\nSelect an option: ");
-                Console.WriteLine("1. Add Contact");
-                Console.WriteLine("2. Display Contact");
-                Console.WriteLine("3. Edit Contact");
-                Console.WriteLine("4. Delete Contact");
+                Console.WriteLine("1. Add New Address Book");
+                Console.WriteLine("2. Add New Contact in Existing Address Book");
+                Console.WriteLine("3. Display all contacts");
+                Console.WriteLine("4. Edit Contact");
+                Console.WriteLine("5. Delete Contact");
+                Console.WriteLine("6. Display Address Book");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -25,16 +27,22 @@ namespace Address_Book_System
                 switch (option)
                 {
                     case 1:
-                        book.AddContact();
+                        controller.AddNewAddressBook();
                         break;
                     case 2:
-                        book.DisplayContact();
+                        controller.AddContact();
                         break;
                     case 3:
-                        book.EditExistingContact();
+                        controller.DisplayContact();
                         break;
                     case 4:
-                        book.DeleteContact();
+                        controller.EditExistingContact();
+                        break;
+                    case 5:
+                        controller.DeleteContact();
+                        break;
+                    case 6:
+                        controller.DisplayAddressBook();
                         break;
                     case 0:
                         Environment.Exit(0);
@@ -44,7 +52,6 @@ namespace Address_Book_System
                         break;
                 }
             }
-
         }
     }
 }

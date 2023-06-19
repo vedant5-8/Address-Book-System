@@ -11,5 +11,6 @@ namespace Address_Book_System
         public string City { get; set; }
         public string State { get; set; }
         public long ZipCode { get; set; }
+
     }
 }
