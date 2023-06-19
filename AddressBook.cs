@@ -3,6 +3,7 @@ namespace Address_Book_System
 {
     internal class AddressBook
     {
+        List<Contact> contactsList = new List<Contact>();
         Dictionary<string, Contact> addressBookDictonary = new Dictionary<string, Contact>();
         public void AddContact()
         {
@@ -25,6 +26,7 @@ namespace Address_Book_System
             Console.Write("Enter postalcode: ");
             contact.ZipCode = Convert.ToInt32(Console.ReadLine());
 
+            contactsList.Add(contact);
             addressBookDictonary.Add(contact.FirstName, contact);
 
         }
