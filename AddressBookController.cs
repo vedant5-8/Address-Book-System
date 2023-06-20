@@ -249,7 +249,7 @@ namespace Address_Book_System
             Console.WriteLine("Enter name of the city: ");
             string city = Console.ReadLine();
 
-            if (contactsList.Exists(c => c.State.Equals(city)))
+            if (contactsList.Exists(c => c.City.Equals(city)))
             {
                 Console.WriteLine("All the contacts of " + city + " city.");
                 foreach (Contact contact in contactsList.FindAll(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase)))
