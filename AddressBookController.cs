@@ -295,5 +295,46 @@ namespace Address_Book_System
             }
         }
 
+        // Count all contacts in city
+        public void CountByCity()
+        {
+            Console.WriteLine("Enter name of the city: ");
+            string city = Console.ReadLine();
+
+            if (contactsList.Exists(c => c.City.Equals(city)))
+            {
+                var contactsByCity = contactsList.GroupBy(c => c.City).ToDictionary(g => city, g => g.Count());
+                foreach (var cities in contactsByCity)
+                {
+                    Console.WriteLine(cities.Key + ": " + cities.Value);
+                }
+            }
+            else
+            {
+                Console.WriteLine("{0} city not found.", city);
+            }
+        }
+
+        // Count all contacts in state
+        public void CountByState()
+        {
+            Console.WriteLine("Enter name of the state: ");
+            string state = Console.ReadLine();
+
+
+            if (contactsList.Exists(c => c.State.Equals(state)))
+            {
+                var contactsByCity = contactsList.GroupBy(c => c.City).ToDictionary(g => state, g => g.Count());
+                foreach (var states in contactsByCity)
+                {
+                    Console.WriteLine(states.Key + ": " + states.Value);
+                }
+            }
+            else
+            {
+                Console.WriteLine("{0} state not found.", state);
+            }
+        }
+
     }
 }
