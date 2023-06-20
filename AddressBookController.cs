@@ -358,7 +358,78 @@ namespace Address_Book_System
             {
                 Console.WriteLine("The address book does not have any contacts.");
             }
+        }
 
+        // Sort contact by city
+        public void SortContactsByCity()
+        {
+            if (contactsList.Count > 0)
+            {
+                var sortedByName = contactsList.OrderBy(c => c.City).ToList();
+                Console.WriteLine("Contacts sorted by city:");
+                foreach (Contact contact in sortedByName)
+                {
+                    Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The address book does not have any contacts.");
+            }
+        }
+
+        // Sort contact by name
+        public void SortContactsByState()
+        {
+            if (contactsList.Count > 0)
+            {
+                var sortedByName = contactsList.OrderBy(c => c.State).ToList();
+                Console.WriteLine("Contacts sorted by state:");
+                foreach (Contact contact in sortedByName)
+                {
+                    Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The address book does not have any contacts.");
+            }
+        }
+
+        // Sort contact by Zip Code
+        public void SortContactsByZipCode()
+        {
+            if (contactsList.Count > 0)
+            {
+                var sortedByName = contactsList.OrderBy(c => c.ZipCode).ToList();
+                Console.WriteLine("Contacts sorted by zip code:");
+                foreach (Contact contact in sortedByName)
+                {
+                    Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The address book does not have any contacts.");
+            }
         }
 
     }

@@ -24,6 +24,7 @@ namespace Address_Book_System
                 Console.WriteLine("8. View contacts by City or State");
                 Console.WriteLine("9. Count contacts by City or State");
                 Console.WriteLine("10. Sort contacts by First Name");
+                Console.WriteLine("11. Sort contacts by City, State or Zip Code");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -49,8 +50,8 @@ namespace Address_Book_System
                         controller.DisplayAddressBook();
                         break;
                     case 7:
-                        char input = 'y';
-                        while (char.ToLower(input) == 'y')
+                        char input = 'n';
+                        while (char.ToLower(input) == 'n')
                         {
                             Console.WriteLine("\nSelect an option: ");
                             Console.WriteLine("1. Search by city.");
@@ -70,13 +71,13 @@ namespace Address_Book_System
                                     Console.WriteLine("Enter valid option.");
                                     break;
                             }
-                            Console.Write("\nDo you want to see anything else? (y = YES,n = NO): ");
+                            Console.Write("\nDo you want to exit? (y = YES,n = NO): ");
                             input = Convert.ToChar(Console.ReadLine());
                         }
                         break;
                     case 8:
-                        char input1 = 'y';
-                        while (char.ToLower(input1) == 'y')
+                        char input1 = 'n';
+                        while (char.ToLower(input1) == 'n')
                         {
                             Console.WriteLine("\nSelect an option: ");
                             Console.WriteLine("1. View by city.");
@@ -96,18 +97,17 @@ namespace Address_Book_System
                                     Console.WriteLine("Enter valid option.");
                                     break;
                             }
-                            Console.Write("\nDo you want to see anything else? (y = YES,n = NO): ");
+                            Console.Write("\nDo you want to exit? (y = YES,n = NO): ");
                             input1 = Convert.ToChar(Console.ReadLine());
                         }
                         break;
                     case 9:
-                        char input2 = 'y';
-                        while (char.ToLower(input2) == 'y')
+                        char input2 = 'n';
+                        while (char.ToLower(input2) == 'n')
                         {
                             Console.WriteLine("\nSelect an option: ");
                             Console.WriteLine("1. Count by city.");
                             Console.WriteLine("2. Count by state.");
-                            Console.WriteLine("0. Exit");
                             Console.Write("=> ");
                             option = Convert.ToInt32(Console.ReadLine());
 
@@ -123,12 +123,42 @@ namespace Address_Book_System
                                     Console.WriteLine("Enter valid option.");
                                     break;
                             }
-                            Console.Write("\nDo you want to see anything else? (y = YES,n = NO): ");
+                            Console.Write("\nDo you want to exit? (y = YES,n = NO): ");
                             input2 = Convert.ToChar(Console.ReadLine());
                         }
                         break;
                     case 10:
                         controller.SortContactsByName();
+                        break;
+                    case 11:
+                        char input3 = 'n';
+                        while (char.ToLower(input3) == 'n')
+                        {
+                            Console.WriteLine("\nSelect an option: ");
+                            Console.WriteLine("1. Sort by city.");
+                            Console.WriteLine("2. Sort by state.");
+                            Console.WriteLine("3. Sort by zip code");
+                            Console.Write("=> ");
+                            option = Convert.ToInt32(Console.ReadLine());
+
+                            switch (option)
+                            {
+                                case 1:
+                                    controller.SortContactsByCity();
+                                    break;
+                                case 2:
+                                    controller.SortContactsByState();
+                                    break;
+                                case 3: 
+                                    controller.SortContactsByZipCode();
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter valid option.");
+                                    break;
+                            }
+                            Console.Write("\nDo you want to exit? (y = YES,n = NO): ");
+                            input3 = Convert.ToChar(Console.ReadLine());
+                        }
                         break;
                     case 0:
                         Environment.Exit(0);
