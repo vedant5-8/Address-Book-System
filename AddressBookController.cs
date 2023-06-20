@@ -209,10 +209,17 @@ namespace Address_Book_System
             Console.WriteLine("Enter name of the city: ");
             string city = Console.ReadLine();
 
-            Console.WriteLine("All the contacts of " + city + " city.");
-            foreach (Contact contact in contactsList.FindAll(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase)))
+            if (contactsList.Exists(c => c.City.Equals(city)))
             {
-                Console.WriteLine("Name: {0} {1}", contact.FirstName, contact.LastName);
+                Console.WriteLine("All the contacts of " + city + " city.");
+                foreach (Contact contact in contactsList.FindAll(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Name: {0} {1}", contact.FirstName, contact.LastName);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The {0} city does not have any contacts.", city);
             }
         }
 
@@ -222,12 +229,18 @@ namespace Address_Book_System
             Console.WriteLine("Enter name of the state: ");
             string state = Console.ReadLine();
 
-            Console.WriteLine("All the contacts of " + state + " state.");
-            foreach (Contact contact in contactsList.FindAll(c => c.State.Equals(state, StringComparison.OrdinalIgnoreCase)))
+            if (contactsList.Exists(c => c.State.Equals(state)))
             {
-                Console.WriteLine("Name: {0} {1}", contact.FirstName, contact.LastName);
+                Console.WriteLine("All the contacts of " + state + " state.");
+                foreach (Contact contact in contactsList.FindAll(c => c.State.Equals(state, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("Name: {0} {1}", contact.FirstName, contact.LastName);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The {0} state does not have any contacts.", state);
             }
         }
-
     }
 }
