@@ -20,8 +20,7 @@ namespace Address_Book_System
                 Console.WriteLine("4. Edit Contact");
                 Console.WriteLine("5. Delete Contact");
                 Console.WriteLine("6. Display Address Book");
-                Console.WriteLine("7. Search contancts by City");
-                Console.WriteLine("8. Search contancts by State");
+                Console.WriteLine("7. Search contacts by City or State");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -47,10 +46,30 @@ namespace Address_Book_System
                         controller.DisplayAddressBook();
                         break;
                     case 7:
-                        controller.SearchByCity();
-                        break;
-                    case 8:
-                        controller.SearchByState();
+                        char input = 'y';
+                        while (char.ToLower(input) == 'y')
+                        {
+                            Console.WriteLine("\nSelect an option: ");
+                            Console.WriteLine("1. Search by city.");
+                            Console.WriteLine("2. Search by state.");
+                            Console.Write("=> ");
+                            option = Convert.ToInt32(Console.ReadLine());
+
+                            switch (option)
+                            {
+                                case 1:
+                                    controller.SearchByCity();
+                                    break;
+                                case 2:
+                                    controller.SearchByState();
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter valid option.");
+                                    break;
+                            }
+                            Console.Write("\nDo you want to see anything else? (y = YES,n = NO): ");
+                            input = Convert.ToChar(Console.ReadLine());
+                        }
                         break;
                     case 0:
                         Environment.Exit(0);

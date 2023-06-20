@@ -1,4 +1,6 @@
 ﻿
+using System.Xml.Linq;
+
 namespace Address_Book_System
 {
     internal class AddressBookController
@@ -102,6 +104,7 @@ namespace Address_Book_System
             }
         }
 
+        // Edit an existing contact
         public void EditExistingContact()
         {
             Console.WriteLine("To edit contact, Enter first name: ");
@@ -172,6 +175,7 @@ namespace Address_Book_System
             }
         }
 
+        // Delete an existing contact
         public void DeleteContact()
         {
             Console.WriteLine("To delete contact, Enter first name: ");
@@ -197,7 +201,6 @@ namespace Address_Book_System
                     }
                 }
             }
-
         }
 
         // Search contact details by City name
@@ -206,15 +209,10 @@ namespace Address_Book_System
             Console.WriteLine("Enter name of the city: ");
             string city = Console.ReadLine();
 
-            foreach (Contact contact in contactsList.FindAll(c => c.City.Equals(city)))
+            Console.WriteLine("All the contacts of " + city + " city.");
+            foreach (Contact contact in contactsList.FindAll(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase)))
             {
-                Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
-                Console.WriteLine("Email: " + contact.Email);
-                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
-                Console.WriteLine("Address: " + contact.Address);
-                Console.WriteLine("City: " + contact.City);
-                Console.WriteLine("State: " + contact.State);
-                Console.WriteLine("Postal Code: " + contact.ZipCode);
+                Console.WriteLine("Name: {0} {1}", contact.FirstName, contact.LastName);
             }
         }
 
@@ -224,15 +222,10 @@ namespace Address_Book_System
             Console.WriteLine("Enter name of the state: ");
             string state = Console.ReadLine();
 
-            foreach (Contact contact in contactsList.FindAll(c => c.State.Equals(state)))
+            Console.WriteLine("All the contacts of " + state + " state.");
+            foreach (Contact contact in contactsList.FindAll(c => c.State.Equals(state, StringComparison.OrdinalIgnoreCase)))
             {
-                Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
-                Console.WriteLine("Email: " + contact.Email);
-                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
-                Console.WriteLine("Address: " + contact.Address);
-                Console.WriteLine("City: " + contact.City);
-                Console.WriteLine("State: " + contact.State);
-                Console.WriteLine("Postal Code: " + contact.ZipCode);
+                Console.WriteLine("Name: {0} {1}", contact.FirstName, contact.LastName);
             }
         }
 
