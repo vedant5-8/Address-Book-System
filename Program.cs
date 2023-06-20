@@ -23,6 +23,7 @@ namespace Address_Book_System
                 Console.WriteLine("7. Search contacts by City or State");
                 Console.WriteLine("8. View contacts by City or State");
                 Console.WriteLine("9. Count contacts by City or State");
+                Console.WriteLine("10. Sort contacts by First Name");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -125,6 +126,9 @@ namespace Address_Book_System
                             Console.Write("\nDo you want to see anything else? (y = YES,n = NO): ");
                             input2 = Convert.ToChar(Console.ReadLine());
                         }
+                        break;
+                    case 10:
+                        controller.SortContactsByName();
                         break;
                     case 0:
                         Environment.Exit(0);

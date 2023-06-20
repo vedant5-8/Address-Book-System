@@ -336,5 +336,30 @@ namespace Address_Book_System
             }
         }
 
+        // Sort contact by name
+        public void SortContactsByName()
+        {
+            if (contactsList.Count > 0)
+            {
+                var sortedByName = contactsList.OrderBy(c => c.FirstName).ToList();
+                Console.WriteLine("Contacts sorted by name:");
+                foreach (Contact contact in sortedByName)
+                {
+                    Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The address book does not have any contacts.");
+            }
+
+        }
+
     }
 }
