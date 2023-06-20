@@ -242,5 +242,58 @@ namespace Address_Book_System
                 Console.WriteLine("The {0} state does not have any contacts.", state);
             }
         }
+
+        // View contact details by City name
+        public void ViewByCity()
+        {
+            Console.WriteLine("Enter name of the city: ");
+            string city = Console.ReadLine();
+
+            if (contactsList.Exists(c => c.State.Equals(city)))
+            {
+                Console.WriteLine("All the contacts of " + city + " city.");
+                foreach (Contact contact in contactsList.FindAll(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The {0} city does not have any contacts.", city);
+            }
+        }
+
+        // View contact details by State name
+        public void ViewByState()
+        {
+            Console.WriteLine("Enter name of the state: ");
+            string state = Console.ReadLine();
+
+            if (contactsList.Exists(c => c.State.Equals(state)))
+            {
+                Console.WriteLine("All the contacts of " + state + " state.");
+                foreach (Contact contact in contactsList.FindAll(c => c.State.Equals(state, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                }
+            }
+            else
+            {
+                Console.WriteLine("The {0} state does not have any contacts.", state);
+            }
+        }
+
     }
 }
