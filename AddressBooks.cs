@@ -92,5 +92,10 @@ namespace Address_Book_System
             return Contacts.Count(c => c.State == state);
         }
 
+        public void SortContactsByFirstName()
+        {
+            Contacts = Contacts.OrderBy(c => c.FirstName).ToList();
+        }
+
     }
 }

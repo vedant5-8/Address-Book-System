@@ -489,5 +489,26 @@ namespace Address_Book_System
             }
         }
 
+        public void SortContactsByNameInAscOrder()
+        {
+            foreach (var addressBook in addressBooks)
+            {
+                addressBook.SortContactsByFirstName();
+
+                Console.WriteLine("Sorting all contacts in {0} addressbook by First Name:\n", addressBook.AddressBookName);
+                foreach (var contact in addressBook.Contacts)
+                {
+                    Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                    Console.WriteLine();
+                }
+            }
+        }
+
     }
 }
