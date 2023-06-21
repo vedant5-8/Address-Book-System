@@ -82,5 +82,15 @@ namespace Address_Book_System
             return Contacts.Where(c => c.State == state).ToList();
         }
 
+        public int CountContactsByCity(string city)
+        {
+            return Contacts.Count(c => c.City == city);
+        }
+
+        public int CountContactsByState(string state)
+        {
+            return Contacts.Count(c => c.State == state);
+        }
+
     }
 }

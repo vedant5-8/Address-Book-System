@@ -297,7 +297,6 @@ namespace Address_Book_System
                             if (contacts.Count == 0)
                             {
                                 Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{city}'.");
-                                return;
                             }
                             else
                             {
@@ -322,7 +321,6 @@ namespace Address_Book_System
                             if (contacts.Count == 0)
                             {
                                 Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{state}'.");
-                                return;
                             }
                             else
                             {
@@ -370,7 +368,6 @@ namespace Address_Book_System
                             if (contacts.Count == 0)
                             {
                                 Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{city}'.");
-                                return;
                             }
                             else
                             {
@@ -401,7 +398,6 @@ namespace Address_Book_System
                             if (contacts.Count == 0)
                             {
                                 Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{state}'.");
-                                return;
                             }
                             else
                             {
@@ -426,6 +422,69 @@ namespace Address_Book_System
                         break;
                 }
                 Console.Write("Do you want to exit? (y = YES,n = NO): ");
+                input = Convert.ToChar(Console.ReadLine());
+            }
+        }
+
+        public void CountContactByCityOrState()
+        {
+            char input = 'n';
+
+            while (char.ToLower(input) == 'n')
+            {
+                Console.WriteLine("Select an Option: ");
+                Console.WriteLine("1. Count by City");
+                Console.WriteLine("2. Count by State");
+                Console.Write("=> ");
+                int option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the city name of the contact to count for:");
+                        var city = Console.ReadLine();
+
+                        foreach (var addressBook in addressBooks)
+                        {
+                            var contacts = addressBook.CountContactsByCity(city);
+
+                            if (contacts == 0)
+                            {
+                                Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{city}'.");
+                            }
+                            else
+                            {
+                                var count = addressBook.CountContactsByCity(city);
+                                Console.WriteLine($"There are {count} contacts in the '{addressBook.AddressBookName}' address book for the city '{city}'.");
+                            }
+                        }
+
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the state name of the contact to search for:");
+                        var state = Console.ReadLine();
+
+                        foreach (var addressBook in addressBooks)
+                        {
+                            var contacts = addressBook.CountContactsByState(state);
+
+                            if (contacts == 0)
+                            {
+                                Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the state '{state}'.");
+                            }
+                            else
+                            {
+                                var count = addressBook.CountContactsByState(state);
+                                Console.WriteLine($"There are {count} contacts in the '{addressBook.AddressBookName}' address book for the state '{state}'.");
+                            }
+                        }
+
+                        break;
+                    default:
+                        Console.WriteLine("Enter valid option.");
+                        break;
+                }
+                Console.Write("\nDo you want to exit? (y = YES,n = NO): ");
                 input = Convert.ToChar(Console.ReadLine());
             }
         }

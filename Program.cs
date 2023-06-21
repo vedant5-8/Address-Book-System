@@ -25,6 +25,7 @@ namespace Address_Book_System
                 Console.WriteLine("6. Delete an existing data");
                 Console.WriteLine("7. Find contact details by City or State");
                 Console.WriteLine("8. View contact details by City or State");
+                Console.WriteLine("9. Count contact details by City or State");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -54,6 +55,9 @@ namespace Address_Book_System
                         break;
                     case 8:
                         controller.ViewContactByCityOrStateInAddressBook();
+                        break;
+                    case 9:
+                        controller.CountContactByCityOrState();
                         break;
                     case 0:
                         Environment.Exit(0);
