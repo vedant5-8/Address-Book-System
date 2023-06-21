@@ -1,0 +1,8 @@
+AddressBookName,FirstName,LastName,Email,PhoneNumber,Address,City,State,ZipCode
+Personal,Vedant,Patil,vedantnp200@gmail.com,8390386312,Kalva,Thane,Maharashtra,400605
+Personal,Raj,Patil,raj25@gmail.com,9513576548,Ranjankhar,Alibag,Maharashtra,402209
+Personal,Sunny,Patel,sunnyp@gmail.com,9713624805,"Khudad ",Ahmedabad,Gujrat,380123
+Private,Mahesh,Dattani,mahesh.dattani@gmail.com,8531467395,Kachohalli,Bangalore,Karnataka,560030
+Private,Sahil,Mhatre,sahilkm@gmail.com,8624753654,Ranjankhar,Alibag,Maharashtra,402209
+Private,Raghubir,Singh,raghu.singh@gmail.com,9371648250,Kalwar,Jaipur,Rajasthan,302010
+AAA,Ojasvi,Mhatre,ojasvi@gmail.com,9713584260,Dhokawade,Alibag,Maharashtra,402201

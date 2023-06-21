@@ -1,4 +1,8 @@
 ﻿
+using CsvHelper;
+using System.Formats.Asn1;
+using System.Globalization;
+
 namespace Address_Book_System
 {
     public class AddressBooks
@@ -142,6 +146,52 @@ namespace Address_Book_System
                 while ((contacts = reader.ReadLine()) != null)
                 {
                     Console.WriteLine(contacts);
+                }
+            }
+        }
+
+        public static void WriteAddressBooksToCsv(List<AddressBooks> addressBooks, string filePath)
+        {
+            using (var writer = new StreamWriter(filePath))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(addressBooks.SelectMany(ab => ab.Contacts.Select(c => new
+                {
+                    AddressBookName = ab.AddressBookName,
+                    c.FirstName,
+                    c.LastName,
+                    c.Email,
+                    c.PhoneNumber,
+                    c.Address,
+                    c.City,
+                    c.State,
+                    c.ZipCode,
+                })));
+            }
+        }
+
+        public static void ReadAddressBooksFromCsvFile(string filePath)
+        {
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<dynamic>().ToList();
+                var groupedRecords = records.GroupBy(r => r.AddressBookName);
+
+                foreach (var group in groupedRecords)
+                {
+                    Console.WriteLine($"Address Book: {group.Key}");
+                    foreach (var record in group)
+                    {
+                        Console.WriteLine($"Name: {record.FirstName} {record.LastName}");
+                        Console.WriteLine("Email: " + record.Email);
+                        Console.WriteLine("Phone Number: " + record.PhoneNumber);
+                        Console.WriteLine("Address: " + record.Address);
+                        Console.WriteLine("City: " + record.City);
+                        Console.WriteLine("State: " + record.State);
+                        Console.WriteLine("Postal Code: " + record.ZipCode);
+                        Console.WriteLine();
+                    }
                 }
             }
         }

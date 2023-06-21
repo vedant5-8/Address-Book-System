@@ -603,5 +603,17 @@ namespace Address_Book_System
             AddressBooks.ReadFromTxtFile(txtFile);
         }
 
+        string csvFile = "D:\\Courses\\C#\\Address-Book-System\\DataFiles\\AddressBook.csv";
+
+        public void WriteToCSVFileUsingCSVHelper()
+        {
+            AddressBooks.WriteAddressBooksToCsv(addressBooks, csvFile);
+        }
+
+        public void ReadFromCSVFileUsingCSVHelper()
+        {
+            AddressBooks.ReadAddressBooksFromCsvFile(csvFile);
+        }
+
     }
 }
