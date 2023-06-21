@@ -615,5 +615,32 @@ namespace Address_Book_System
             AddressBooks.ReadAddressBooksFromCsvFile(csvFile);
         }
 
+        string jsonFile = "D:\\Courses\\C#\\Address-Book-System\\DataFiles\\AddressBook.json";
+
+        public void WriteToJSONFileUsingNewtonsoftJson()
+        {
+            AddressBooks.WriteAddressBooksToJson(addressBooks, jsonFile);
+        }
+
+        public void ReadFromJSONFileUsingNewtonsoftJson()
+        {
+            var readAddressBooks = AddressBooks.ReadAddressBooksFromJson(jsonFile);
+            foreach (var addressBook in readAddressBooks)
+            {
+                Console.WriteLine($"Address Book: {addressBook.AddressBookName}");
+                foreach (var contact in addressBook.Contacts)
+                {
+                    Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                    Console.WriteLine("Email: " + contact.Email);
+                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                    Console.WriteLine("Address: " + contact.Address);
+                    Console.WriteLine("City: " + contact.City);
+                    Console.WriteLine("State: " + contact.State);
+                    Console.WriteLine("Zip Code: " + contact.ZipCode);
+                    Console.WriteLine();
+                }
+            }
+        }
+
     }
 }

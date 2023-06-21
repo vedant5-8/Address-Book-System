@@ -1,0 +1,87 @@
+[
+  {
+    "AddressBookName": "Personal",
+    "Contacts": [
+      {
+        "FirstName": "Vedant",
+        "LastName": "Patil",
+        "Email": "vedantnp200@gmail.com",
+        "PhoneNumber": "8390386312",
+        "Address": "Kalva",
+        "City": "Thane",
+        "State": "Maharashtra",
+        "ZipCode": "400605"
+      },
+      {
+        "FirstName": "Raj",
+        "LastName": "Patil",
+        "Email": "raj25@gmail.com",
+        "PhoneNumber": "9513576548",
+        "Address": "Ranjankhar",
+        "City": "Alibag",
+        "State": "Maharashtra",
+        "ZipCode": "402209"
+      },
+      {
+        "FirstName": "Sunny",
+        "LastName": "Patel",
+        "Email": "sunnyp@gmail.com",
+        "PhoneNumber": "9713624805",
+        "Address": "Khudad ",
+        "City": "Ahmedabad",
+        "State": "Gujrat",
+        "ZipCode": "380123"
+      }
+    ]
+  },
+  {
+    "AddressBookName": "Private",
+    "Contacts": [
+      {
+        "FirstName": "Mahesh",
+        "LastName": "Dattani",
+        "Email": "mahesh.dattani@gmail.com",
+        "PhoneNumber": "8531467395",
+        "Address": "Kachohalli",
+        "City": "Bangalore",
+        "State": "Karnataka",
+        "ZipCode": "560030"
+      },
+      {
+        "FirstName": "Sahil",
+        "LastName": "Mhatre",
+        "Email": "sahilkm@gmail.com",
+        "PhoneNumber": "8624753654",
+        "Address": "Ranjankhar",
+        "City": "Alibag",
+        "State": "Maharashtra",
+        "ZipCode": "402209"
+      },
+      {
+        "FirstName": "Raghubir",
+        "LastName": "Singh",
+        "Email": "raghu.singh@gmail.com",
+        "PhoneNumber": "9371648250",
+        "Address": "Kalwar",
+        "City": "Jaipur",
+        "State": "Rajasthan",
+        "ZipCode": "302010"
+      }
+    ]
+  },
+  {
+    "AddressBookName": "Friends",
+    "Contacts": [
+      {
+        "FirstName": "Manish",
+        "LastName": "Patil",
+        "Email": "manish@gmail.com",
+        "PhoneNumber": "7744935632",
+        "Address": "Vashi",
+        "City": "Navi Mumbai",
+        "State": "Maharashtra",
+        "ZipCode": "400703"
+      }
+    ]
+  }
+]

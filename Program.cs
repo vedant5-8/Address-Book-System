@@ -33,6 +33,7 @@ namespace Address_Book_System
                 Console.WriteLine("11. Sort contacts by City or State or Zip Code");
                 Console.WriteLine("12.Write and Read Address Book and Contacts details to TEXT file");
                 Console.WriteLine("13. Write and Read Address Book and Contacts details to CSV file");
+                Console.WriteLine("14. Write and Read Address Book and Contacts details to JSON file");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -79,6 +80,10 @@ namespace Address_Book_System
                     case 13:
                         controller.WriteToCSVFileUsingCSVHelper();
                         controller.ReadFromCSVFileUsingCSVHelper();
+                        break;
+                    case 14:
+                        controller.WriteToJSONFileUsingNewtonsoftJson();
+                        controller.ReadFromJSONFileUsingNewtonsoftJson();
                         break;
                     case 0:
                         Environment.Exit(0);

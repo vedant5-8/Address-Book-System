@@ -195,5 +195,27 @@ namespace Address_Book_System
             }
         }
 
+        public static void WriteAddressBooksToJson(List<AddressBooks> addressBooks, string filePath)
+        {
+            using (var file = File.CreateText(filePath))
+            using (var writer = new JsonTextWriter(file))
+            {
+                writer.Formatting = Formatting.Indented;
+
+                var serializer = new JsonSerializer();
+                serializer.Serialize(writer, addressBooks);
+            }
+        }
+
+        public static List<AddressBooks> ReadAddressBooksFromJson(string filePath)
+        {
+            using (var file = File.OpenText(filePath))
+            using (var reader = new JsonTextReader(file))
+            {
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<List<AddressBooks>>(reader);
+            }
+        }
+
     }
 }
