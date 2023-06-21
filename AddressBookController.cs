@@ -345,5 +345,90 @@ namespace Address_Book_System
             }
         }
 
+        public void ViewContactByCityOrStateInAddressBook()
+        {
+            char input = 'n';
+
+            while (char.ToLower(input) == 'n')
+            {
+                Console.WriteLine("Select an Option: ");
+                Console.WriteLine("1. View by City");
+                Console.WriteLine("2. View by State");
+                Console.Write("=> ");
+                int option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the city name of the contact to search for:");
+                        var city = Console.ReadLine();
+
+                        foreach (var addressBook in addressBooks)
+                        {
+                            var contacts = addressBook.FindContactsByCity(city);
+
+                            if (contacts.Count == 0)
+                            {
+                                Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{city}'.");
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Contacts found in the '{addressBook.AddressBookName}' address book for the city '{city}':\n");
+                                foreach (var contact in contacts)
+                                {
+                                    Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                    Console.WriteLine("Email: " + contact.Email);
+                                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                                    Console.WriteLine("Address: " + contact.Address);
+                                    Console.WriteLine("City: " + contact.City);
+                                    Console.WriteLine("State: " + contact.State);
+                                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                                    Console.WriteLine();
+                                }
+                            }
+                        }
+
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the state name of the contact to search for:");
+                        var state = Console.ReadLine();
+
+                        foreach (var addressBook in addressBooks)
+                        {
+                            var contacts = addressBook.FindContactsByState(state);
+
+                            if (contacts.Count == 0)
+                            {
+                                Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{state}'.");
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Contacts found in the '{addressBook.AddressBookName}' address book for the city '{state}':\n");
+                                foreach (var contact in contacts)
+                                {
+                                    Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                    Console.WriteLine("Email: " + contact.Email);
+                                    Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                                    Console.WriteLine("Address: " + contact.Address);
+                                    Console.WriteLine("City: " + contact.City);
+                                    Console.WriteLine("State: " + contact.State);
+                                    Console.WriteLine("Postal Code: " + contact.ZipCode);
+                                    Console.WriteLine();
+                                }
+                            }
+                        }
+
+                        break;
+                    default:
+                        Console.WriteLine("Enter valid option.");
+                        break;
+                }
+                Console.Write("Do you want to exit? (y = YES,n = NO): ");
+                input = Convert.ToChar(Console.ReadLine());
+            }
+        }
+
     }
 }
