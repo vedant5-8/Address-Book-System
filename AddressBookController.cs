@@ -270,9 +270,80 @@ namespace Address_Book_System
                     Console.WriteLine("Contact {0} {1} not found in '{2}' address book.", FirstName, LastName, address_Book.AddressBookName);
                 }
             }
-            
         }
 
+        public void FindContactByCityOrStateInAddressBook()
+        {
+            char input = 'n';
+
+            while (char.ToLower(input) == 'n')
+            {
+                Console.WriteLine("Select an Option: ");
+                Console.WriteLine("1. Find by City");
+                Console.WriteLine("2. Find by State");
+                Console.Write("=> ");
+                int option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the city name of the contact to search for:");
+                        var city = Console.ReadLine();
+
+                        foreach (var addressBook in addressBooks)
+                        {
+                            var contacts = addressBook.FindContactsByCity(city);
+
+                            if (contacts.Count == 0)
+                            {
+                                Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{city}'.");
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Contacts found in the '{addressBook.AddressBookName}' address book for the city '{city}':");
+                                foreach (var contact in contacts)
+                                {
+                                    Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                }
+                                Console.WriteLine();
+                            }
+                        }
+
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the state name of the contact to search for:");
+                        var state = Console.ReadLine();
+
+                        foreach (var addressBook in addressBooks)
+                        {
+                            var contacts = addressBook.FindContactsByState(state);
+
+                            if (contacts.Count == 0)
+                            {
+                                Console.WriteLine($"No contacts were found in the '{addressBook.AddressBookName}' address book for the city '{state}'.");
+                                return;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Contacts found in the '{addressBook.AddressBookName}' address book for the city '{state}':");
+                                foreach (var contact in contacts)
+                                {
+                                    Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                }
+                                Console.WriteLine();
+                            }
+                        }
+
+                        break;
+                    default:
+                        Console.WriteLine("Enter valid option.");
+                        break;
+                }
+                Console.Write("Do you want to exit? (y = YES,n = NO): ");
+                input = Convert.ToChar(Console.ReadLine());
+            }
+        }
 
     }
 }

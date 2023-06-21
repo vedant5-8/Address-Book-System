@@ -72,5 +72,15 @@ namespace Address_Book_System
             Contacts.RemoveAll(c => c.FirstName == firstName && c.LastName == lastName);
         }
 
+        public List<Contact> FindContactsByCity(string city)
+        {
+            return Contacts.Where(c => c.City == city).ToList();
+        }
+
+        public List<Contact> FindContactsByState(string state)
+        {
+            return Contacts.Where(c => c.State == state).ToList();
+        }
+
     }
 }
