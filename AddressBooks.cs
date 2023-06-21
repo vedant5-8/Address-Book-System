@@ -14,8 +14,19 @@ namespace Address_Book_System
 
         public void AddContact(Contact contact)
         {
-            Contacts.Add(contact);
-            Console.WriteLine($"A new contact has been added to the '{AddressBookName}' address book.");
+
+            if (Contacts.Any(c => c.FirstName == contact.FirstName && c.LastName == contact.LastName &&
+                        c.Email == contact.Email && c.PhoneNumber == contact.PhoneNumber &&
+                        c.Address == contact.Address && c.City == contact.City &&
+                        c.State == contact.State && c.ZipCode == contact.ZipCode))
+            {
+                Console.WriteLine($"A contact with the same details already exists in the '{AddressBookName}' address book.");
+            }
+            else
+            {
+                Contacts.Add(contact);
+                Console.WriteLine($"A new contact has been added to the '{AddressBookName}' address book.");
+            }
         }
 
         public void ModifyContact(string firstName, string lastName, string field, string newValue)
