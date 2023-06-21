@@ -27,6 +27,7 @@ namespace Address_Book_System
                 Console.WriteLine("8. View contact details by City or State");
                 Console.WriteLine("9. Count contact details by City or State");
                 Console.WriteLine("10. Sort contacts by Name in Ascending order");
+                Console.WriteLine("11. Sort contacts by City or State or Zip Code");
                 Console.WriteLine("0. Exit");
                 Console.Write("=> ");
                 int option = Convert.ToInt32(Console.ReadLine());
@@ -62,6 +63,9 @@ namespace Address_Book_System
                         break;
                     case 10:
                         controller.SortContactsByNameInAscOrder();
+                        break;
+                    case 11:
+                        controller.SortContactByCityOrStateOrZipCode();
                         break;
                     case 0:
                         Environment.Exit(0);

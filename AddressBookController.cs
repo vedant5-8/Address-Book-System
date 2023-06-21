@@ -510,5 +510,86 @@ namespace Address_Book_System
             }
         }
 
+        public void SortContactByCityOrStateOrZipCode()
+        {
+            char input = 'n';
+
+            while (char.ToLower(input) == 'n')
+            {
+                Console.WriteLine("Select an Option: ");
+                Console.WriteLine("1. Sort by City");
+                Console.WriteLine("2. Sort by State");
+                Console.WriteLine("3. Sort by ZipCode");
+                Console.Write("=> ");
+                int option = Convert.ToInt32(Console.ReadLine());
+
+                switch (option)
+                {
+                    case 1:
+                        foreach (var addressBook in addressBooks)
+                        {
+                            addressBook.SortContactsByCity();
+
+                            Console.WriteLine("Sorting all contacts in {0} addressbook by City:\n", addressBook.AddressBookName);
+                            foreach (var contact in addressBook.Contacts)
+                            {
+                                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                Console.WriteLine("Email: " + contact.Email);
+                                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                                Console.WriteLine("Address: " + contact.Address);
+                                Console.WriteLine("City: " + contact.City);
+                                Console.WriteLine("State: " + contact.State);
+                                Console.WriteLine("Postal Code: " + contact.ZipCode);
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+                    case 2:
+                        foreach (var addressBook in addressBooks)
+                        {
+                            addressBook.SortContactsByState();
+
+                            Console.WriteLine("Sorting all contacts in {0} addressbook by State:\n", addressBook.AddressBookName);
+                            foreach (var contact in addressBook.Contacts)
+                            {
+                                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                Console.WriteLine("Email: " + contact.Email);
+                                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                                Console.WriteLine("Address: " + contact.Address);
+                                Console.WriteLine("City: " + contact.City);
+                                Console.WriteLine("State: " + contact.State);
+                                Console.WriteLine("Postal Code: " + contact.ZipCode);
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+                    case 3:
+                        foreach (var addressBook in addressBooks)
+                        {
+                            addressBook.SortContactsByZipCode();
+
+                            Console.WriteLine("Sorting all contacts in {0} addressbook by Zip Code:\n", addressBook.AddressBookName);
+                            foreach (var contact in addressBook.Contacts)
+                            {
+                                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}");
+                                Console.WriteLine("Email: " + contact.Email);
+                                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                                Console.WriteLine("Address: " + contact.Address);
+                                Console.WriteLine("City: " + contact.City);
+                                Console.WriteLine("State: " + contact.State);
+                                Console.WriteLine("Postal Code: " + contact.ZipCode);
+                                Console.WriteLine();
+                            }
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Enter valid option.");
+                        break;
+                }
+                Console.Write("Do you want to exit? (y = YES,n = NO): ");
+                input = Convert.ToChar(Console.ReadLine());
+            }
+        }
+
     }
 }

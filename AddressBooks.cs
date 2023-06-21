@@ -97,5 +97,20 @@ namespace Address_Book_System
             Contacts = Contacts.OrderBy(c => c.FirstName).ToList();
         }
 
+        public void SortContactsByCity()
+        {
+            Contacts = Contacts.OrderBy(c => c.City).ToList();
+        }
+
+        public void SortContactsByState()
+        {
+            Contacts = Contacts.OrderBy(c => c.State).ToList();
+        }
+
+        public void SortContactsByZipCode()
+        {
+            Contacts = Contacts.OrderBy(c => c.ZipCode).ToList();
+        }
+
     }
 }
