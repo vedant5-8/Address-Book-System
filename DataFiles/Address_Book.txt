@@ -1,0 +1,52 @@
+Address Book: Personal
+
+Name: Vedant Patil
+Email: vedantnp200@gmail.com
+Phone Number: 8390386312
+Address: Kalva
+City: Thane
+State: Maharashtra
+Postal Code: 400605
+
+Name: Raj Patil
+Email: raj25@gmail.com
+Phone Number: 9513576548
+Address: Ranjankhar
+City: Alibag
+State: Maharashtra
+Postal Code: 402209
+
+Name: Sunny Patel
+Email: sunnyp@gmail.com
+Phone Number: 9713624805
+Address: Khudad 
+City: Ahmedabad
+State: Gujrat
+Postal Code: 380123
+
+Address Book: Private
+
+Name: Mahesh Dattani
+Email: mahesh.dattani@gmail.com
+Phone Number: 8531467395
+Address: Kachohalli
+City: Bangalore
+State: Karnataka
+Postal Code: 560030
+
+Name: Sahil Mhatre
+Email: sahilkm@gmail.com
+Phone Number: 8624753654
+Address: Ranjankhar
+City: Alibag
+State: Maharashtra
+Postal Code: 402209
+
+Name: Raghubir Singh
+Email: raghu.singh@gmail.com
+Phone Number: 9371648250
+Address: Kalwar
+City: Jaipur
+State: Rajasthan
+Postal Code: 302010
+

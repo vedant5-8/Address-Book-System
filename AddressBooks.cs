@@ -112,5 +112,39 @@ namespace Address_Book_System
             Contacts = Contacts.OrderBy(c => c.ZipCode).ToList();
         }
 
+        public static void WriteToTxtFile(List<AddressBooks> addressBooks, string fileName)
+        {
+            using (var writer = new StreamWriter(fileName))
+            {
+                foreach (var addressBook in addressBooks)
+                {
+                    writer.WriteLine("Address Book: " + addressBook.AddressBookName);
+                    foreach (var contact in addressBook.Contacts)
+                    {
+                        writer.WriteLine("\nName: {0} {1}", contact.FirstName, contact.LastName);
+                        writer.WriteLine("Email: " + contact.Email);
+                        writer.WriteLine("Phone Number: " + contact.PhoneNumber);
+                        writer.WriteLine("Address: " + contact.Address);
+                        writer.WriteLine("City: " + contact.City);
+                        writer.WriteLine("State: " + contact.State);
+                        writer.WriteLine("Postal Code: " + contact.ZipCode);
+                    }
+                    writer.WriteLine();
+                }
+            }
+        }
+
+        public static void ReadFromTxtFile(string fileName)
+        {
+            using (StreamReader reader = new StreamReader(fileName))
+            {
+                string contacts;
+                while ((contacts = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(contacts);
+                }
+            }
+        }
+
     }
 }

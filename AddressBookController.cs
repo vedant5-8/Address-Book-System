@@ -591,5 +591,17 @@ namespace Address_Book_System
             }
         }
 
+        string txtFile = "D:\\Courses\\C#\\Address-Book-System\\DataFiles\\Address_Book.txt";
+
+        public void WriteToFileUsingFileIO()
+        {
+            AddressBooks.WriteToTxtFile(addressBooks, txtFile);
+        }
+
+        public void ReadFromFileUsingFileIO()
+        {
+            AddressBooks.ReadFromTxtFile(txtFile);
+        }
+
     }
 }
