@@ -125,6 +125,7 @@ namespace Address_Book_System
                     {
                         Console.WriteLine("\nSelect an option: ");
                         Console.WriteLine("1. Insert new address book in Address Book table.");
+                        Console.WriteLine("2. Insert new Contact Details in Contacts table.");
                         Console.WriteLine("0. Exit");
                         Console.Write("=> ");
                         option = Convert.ToInt32(Console.ReadLine());
@@ -133,6 +134,9 @@ namespace Address_Book_System
                         {
                             case 1:
                                 databaseController.InsertNewAddressBook();
+                                break;
+                            case 2:
+                                databaseController.InsertNewContact();
                                 break;
                             case 0:
                                 Environment.Exit(0);
