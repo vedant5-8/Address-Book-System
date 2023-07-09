@@ -106,7 +106,7 @@ namespace Address_Book_System
             }
         }
 
-        // UC4: Insert new Contact details in Contacts table
+        // UC5: Insert new Contact details in Contacts table
         public void InsertNewContact()
         {
             try
