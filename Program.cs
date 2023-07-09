@@ -141,6 +141,7 @@ namespace Address_Book_System
                         Console.WriteLine("11. Count records by City");
                         Console.WriteLine("12. Count records by State");
                         Console.WriteLine("13. Retrive All Records Order By Name");
+                        Console.WriteLine("14. Retrive All Contacts By Address Book Name.");
                         Console.WriteLine("0. Exit");
                         Console.Write("=> ");
                         option = Convert.ToInt32(Console.ReadLine());
@@ -185,6 +186,9 @@ namespace Address_Book_System
                                 break;
                             case 13:
                                 databaseController.RetriveAllRecordsOrderByName();
+                                break;
+                            case 14:
+                                databaseController.RetriveAllContactsByAddressBookName();
                                 break;
                             case 0:
                                 Environment.Exit(0);
