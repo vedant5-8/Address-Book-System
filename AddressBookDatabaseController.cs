@@ -80,6 +80,27 @@ namespace Address_Book_System
             }
         }
 
+        // UC18: Alter table to add Date_Added Column to store current date when a new record is added to the table.
+
+        public void Alter_Contacts_Table()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                string Query = "ALTER TABLE Contacts ADD Date_Added DATE DEFAULT GETDATE();";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Column Added Successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         // UC4: Insert new address books in Address Book table
 
         public void InsertNewAddressBook()
@@ -374,6 +395,76 @@ namespace Address_Book_System
                         Console.WriteLine("Address Book Name: \"" + addressBooksModel.AddressBookName + "\"");
                         Console.ResetColor();
                         Console.WriteLine("Person Name: {0} {1}", contactModel.FirstName, contactModel.LastName);
+                        Console.WriteLine("Email: " + contactModel.Email);
+                        Console.WriteLine("Phone Number: " + contactModel.PhoneNumber);
+                        Console.WriteLine("Address: " + contactModel.Address);
+                        Console.WriteLine("City: " + contactModel.City);
+                        Console.WriteLine("State: " + contactModel.State);
+                        Console.WriteLine("Zip Code: " + contactModel.ZipCode);
+                        Console.WriteLine();
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Record Not Found in Employee_Payroll Table");
+                }
+
+                sqlDataReader.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        // UC18: Retrive Records By Range Of Date
+        public void RetriveRecordsByRangeOfDate()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Contact contactModel = new Contact();
+
+                Console.Write("Enter Staring Date: ");
+                DateTime StartingDate = Convert.ToDateTime(Console.ReadLine());
+
+                Console.Write("\nEnter Ending Date: ");
+                DateTime EndingDate = Convert.ToDateTime(Console.ReadLine());
+
+                string Query = "SELECT * FROM Contacts WHERE Date_Added BETWEEN @StartingDate AND @EndingDate;";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@StartingDate", StartingDate);
+                cmd.Parameters.AddWithValue("@EndingDate", EndingDate);
+
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
+
+                if (sqlDataReader.HasRows)
+                {
+                    Console.WriteLine("\nRecords Retrived from Database: ");
+
+                    while (sqlDataReader.Read())
+                    {
+                        addressBooksModel.AddressBookName = sqlDataReader.GetString(1);
+                        contactModel.FirstName = sqlDataReader.GetString(2);
+                        contactModel.LastName = sqlDataReader.GetString(3);
+                        contactModel.Email = sqlDataReader.GetString(4);
+                        contactModel.PhoneNumber = sqlDataReader.GetString(5);
+                        contactModel.Address = sqlDataReader.GetString(6);
+                        contactModel.City = sqlDataReader.GetString(7);
+                        contactModel.State = sqlDataReader.GetString(8);
+                        contactModel.ZipCode = sqlDataReader.GetString(9);
+
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("Address Book Name: \"" + addressBooksModel.AddressBookName + "\"");
+                        Console.ResetColor();
+                        Console.WriteLine("Name: {0} {1}", contactModel.FirstName, contactModel.LastName);
                         Console.WriteLine("Email: " + contactModel.Email);
                         Console.WriteLine("Phone Number: " + contactModel.PhoneNumber);
                         Console.WriteLine("Address: " + contactModel.Address);

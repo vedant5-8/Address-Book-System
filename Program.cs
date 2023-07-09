@@ -121,6 +121,10 @@ namespace Address_Book_System
 
                     // databaseController.CreateTable_Contacts();
 
+                    /* Alter table to add Date_Added Column to store current date when a new record is added to the table. */
+
+                    // databaseController.Alter_Contacts_Table();
+
                     while (true)
                     {
                         Console.WriteLine("\nSelect an option: ");
@@ -129,6 +133,7 @@ namespace Address_Book_System
                         Console.WriteLine("3. Update existing contact details.");
                         Console.WriteLine("4. Delete a existing contact.");
                         Console.WriteLine("5. Retrieve all contact details.");
+                        Console.WriteLine("6. Retrive Records By Range Of Date");
                         Console.WriteLine("0. Exit");
                         Console.Write("=> ");
                         option = Convert.ToInt32(Console.ReadLine());
@@ -149,6 +154,9 @@ namespace Address_Book_System
                                 break;
                             case 5:
                                 databaseController.RetriveAllRecords();
+                                break;
+                            case 6:
+                                databaseController.RetriveRecordsByRangeOfDate();
                                 break;
                             case 0:
                                 Environment.Exit(0);
