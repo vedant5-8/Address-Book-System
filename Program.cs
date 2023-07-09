@@ -105,8 +105,13 @@ namespace Address_Book_System
                                 break;
                         }
                     }
-                    break;
+
                 case 2:
+                    AddressBookDatabaseController databaseController = new AddressBookDatabaseController();
+
+                    /* Create database in MS SQL Server */
+
+                    databaseController.CreateDatabase();
 
                     break;
                 case 0: 
