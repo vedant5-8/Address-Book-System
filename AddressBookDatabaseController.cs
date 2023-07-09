@@ -430,8 +430,6 @@ namespace Address_Book_System
                 SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
                 con.Open();
 
-                Contact contactModel = new Contact();
-
                 Console.WriteLine("Enter City: ");
                 contactModel.City = Console.ReadLine();
 
@@ -461,8 +459,6 @@ namespace Address_Book_System
                 SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
                 con.Open();
 
-                Contact contactModel = new Contact();
-
                 Console.WriteLine("Enter State: ");
                 contactModel.State = Console.ReadLine();
 
@@ -476,6 +472,70 @@ namespace Address_Book_System
 
                 Console.WriteLine("Total number of contacts present in {0} state are {1}.", contactModel.State, count);
 
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        // UC10: Retrive All Records Order By Name
+        public void RetriveAllRecordsOrderByName()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Console.WriteLine("Enter City: ");
+                contactModel.City = Console.ReadLine();
+
+                string Query = "SELECT * FROM Contacts WHERE City = @City ORDER BY First_Name;";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@City", contactModel.City);
+
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
+
+                if (sqlDataReader.HasRows)
+                {
+                    Console.WriteLine("\nContacts Retrived from Database: ");
+
+                    while (sqlDataReader.Read())
+                    {
+                        addressBooksModel.AddressBookName = sqlDataReader.GetString(1);
+                        contactModel.FirstName = sqlDataReader.GetString(2);
+                        contactModel.LastName = sqlDataReader.GetString(3);
+                        contactModel.Email = sqlDataReader.GetString(4);
+                        contactModel.PhoneNumber = sqlDataReader.GetString(5);
+                        contactModel.Address = sqlDataReader.GetString(6);
+                        contactModel.City = sqlDataReader.GetString(7);
+                        contactModel.State = sqlDataReader.GetString(8);
+                        contactModel.ZipCode = sqlDataReader.GetString(9);
+
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("Address Book Name: \"" + addressBooksModel.AddressBookName + "\"");
+                        Console.ResetColor();
+                        Console.WriteLine("Name: {0} {1}", contactModel.FirstName, contactModel.LastName);
+                        Console.WriteLine("Email: " + contactModel.Email);
+                        Console.WriteLine("Phone Number: " + contactModel.PhoneNumber);
+                        Console.WriteLine("Address: " + contactModel.Address);
+                        Console.WriteLine("City: " + contactModel.City);
+                        Console.WriteLine("State: " + contactModel.State);
+                        Console.WriteLine("Zip Code: " + contactModel.ZipCode);
+                        Console.WriteLine();
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Record Not Found in Employee_Payroll Table");
+                }
+
+                sqlDataReader.Close();
                 con.Close();
             }
             catch (Exception ex)
