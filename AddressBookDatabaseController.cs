@@ -326,7 +326,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -418,7 +417,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -448,7 +446,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -477,7 +474,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -541,7 +537,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -584,7 +579,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -644,7 +638,35 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        // UC13: Count Records By Address Book Name
+        public void CountRecordsByAddressBookName()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Console.WriteLine("Enter Address Book Name: ");
+                addressBooksModel.AddressBookName = Console.ReadLine();
+
+                string Query = "SELECT COUNT(*) FROM Contacts c INNER JOIN Address_Books a ON c.AddressBook_Name = a.AddressBook_Name WHERE a.AddressBook_Name = @AddressBookName;";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@AddressBookName", addressBooksModel.AddressBookName);
+
+                int count = (int)cmd.ExecuteScalar();
+
+                Console.WriteLine("Total number of contacts present in {0} address book are {1}.", addressBooksModel.AddressBookName, count);
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -714,7 +736,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -780,7 +801,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -845,7 +865,6 @@ namespace Address_Book_System
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
             }
         }
 
