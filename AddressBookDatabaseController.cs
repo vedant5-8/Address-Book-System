@@ -167,7 +167,9 @@ namespace Address_Book_System
                 Console.WriteLine("Enter Your Zip Code: ");
                 contactModel.ZipCode = Console.ReadLine();
 
-                string Query = "INSERT INTO Contacts VALUES (@AddressBookName, @FirstName, @LastName, @Email, @PhoneNumber, @Address, @City, @State, @ZipCode);";
+                string Query = "INSERT INTO Contacts " +
+                    "(AddressBook_Name, First_Name, Last_Name, Email, Phone_Number, Address, City, State, Zip_Code) " +
+                    "VALUES (@AddressBookName, @FirstName, @LastName, @Email, @PhoneNumber, @Address, @City, @State, @ZipCode);";
 
                 SqlCommand cmd = new SqlCommand(Query, con);
 
@@ -620,7 +622,7 @@ namespace Address_Book_System
                 Console.WriteLine(ex.StackTrace);
             }
         }
-        
+
         // UC20: Insert Contact In Multiple Address Book
         public void InsertContactInMultipleAddressBook()
         {
@@ -670,7 +672,9 @@ namespace Address_Book_System
 
                 for (int i = 0; i < n; i++)
                 {
-                    Query += "INSERT INTO Contacts VALUES (@AddressBookName" + i + ", @First_Name, @Last_Name, @Email, @Phone_Number, @Address, @City, @State, @Zip_Code);";
+                    Query += "INSERT INTO Contacts " +
+                        "(AddressBook_Name, First_Name, Last_Name, Email, Phone_Number, Address, City, State, Zip_Code) " +
+                        "VALUES (@AddressBookName" + i + ", @First_Name, @Last_Name, @Email, @Phone_Number, @Address, @City, @State, @Zip_Code);";
                 }
 
                 SqlCommand cmd = new SqlCommand(Query, con);
