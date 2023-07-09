@@ -191,15 +191,15 @@ namespace Address_Book_System
                 {
                     string Query = String.Empty;
                     Console.WriteLine("\nSelect an option: ");
-                    Console.WriteLine("1. Update Address Book Name");
-                    Console.WriteLine("2. Update First Name");
-                    Console.WriteLine("3. Update Last Name");
-                    Console.WriteLine("4. Update Email");
-                    Console.WriteLine("5. Update Phone Number");
-                    Console.WriteLine("6. Update Address");
-                    Console.WriteLine("7. Update City");
-                    Console.WriteLine("8. Update State");
-                    Console.WriteLine("9. Update Zip Code");
+                    Console.WriteLine("1. Update Address Book Name.");
+                    Console.WriteLine("2. Update First Name.");
+                    Console.WriteLine("3. Update Last Name.");
+                    Console.WriteLine("4. Update Email.");
+                    Console.WriteLine("5. Update Phone Number.");
+                    Console.WriteLine("6. Update Address.");
+                    Console.WriteLine("7. Update City.");
+                    Console.WriteLine("8. Update State.");
+                    Console.WriteLine("9. Update Zip Code.");
                     Console.WriteLine("0. Exit");
                     Console.Write("==> ");
                     int option = Convert.ToInt32(Console.ReadLine());
