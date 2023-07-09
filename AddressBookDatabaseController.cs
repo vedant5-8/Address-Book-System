@@ -422,6 +422,69 @@ namespace Address_Book_System
             }
         }
 
+        // UC9: Count Records By City or State
+        public void CountContactsByCity()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Contact contactModel = new Contact();
+
+                Console.WriteLine("Enter City: ");
+                contactModel.City = Console.ReadLine();
+
+                string Query = "SELECT COUNT(*) FROM Contacts WHERE City = @City";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@City", contactModel.City);
+
+                int count = (int)cmd.ExecuteScalar();
+
+                Console.WriteLine(count);
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        public void CountContactsByState()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Contact contactModel = new Contact();
+
+                Console.WriteLine("Enter State: ");
+                contactModel.State = Console.ReadLine();
+
+                string Query = "SELECT COUNT(*) FROM Contacts WHERE State = @State";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@State", contactModel.State);
+
+                int count = (int)cmd.ExecuteScalar();
+
+                Console.WriteLine(count);
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
         // UC18: Retrive Records By Range Of Date
         public void RetriveRecordsByRangeOfDate()
         {
