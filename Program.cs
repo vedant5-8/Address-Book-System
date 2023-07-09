@@ -136,6 +136,7 @@ namespace Address_Book_System
                         Console.WriteLine("6. Retrive Records By Range Of Date");
                         Console.WriteLine("7. Retrive All Records By City");
                         Console.WriteLine("8. Retrive All Records By State");
+                        Console.WriteLine("9. Insert one contact in multiple address books");
                         Console.WriteLine("0. Exit");
                         Console.Write("=> ");
                         option = Convert.ToInt32(Console.ReadLine());
