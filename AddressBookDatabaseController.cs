@@ -171,5 +171,144 @@ namespace Address_Book_System
             }
         }
 
+        // UC6: Update existing contact details
+
+        public void UpdateRecord()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                AddressBooks addressBooksModel = new AddressBooks();
+                Contact contactModel = new Contact();
+
+                Console.WriteLine("To Edit Records");
+                Console.Write("Enter Your First Name: ");
+                string firstName = Console.ReadLine();
+
+                Console.Write("Enter Your Last Name: ");
+                string lastName = Console.ReadLine();
+
+                while (true)
+                {
+                    string Query = String.Empty;
+                    Console.WriteLine("\nSelect an option: ");
+                    Console.WriteLine("1. Update Address Book Name");
+                    Console.WriteLine("2. Update First Name");
+                    Console.WriteLine("3. Update Last Name");
+                    Console.WriteLine("4. Update Email");
+                    Console.WriteLine("5. Update Phone Number");
+                    Console.WriteLine("6. Update Address");
+                    Console.WriteLine("7. Update City");
+                    Console.WriteLine("8. Update State");
+                    Console.WriteLine("9. Update Zip Code");
+                    Console.WriteLine("0. Exit");
+                    Console.Write("==> ");
+                    int option = Convert.ToInt32(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            Console.Write("Enter New Address Book Name: ");
+                            addressBooksModel.AddressBookName = Console.ReadLine();
+                            Query = "UPDATE Contacts SET AddressBook_Name = @AddressBookName WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 2:
+                            Console.Write("Enter New First Name: ");
+                            contactModel.FirstName = Console.ReadLine();
+                            Query = "UPDATE Contacts SET First_Name = @FirstName WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 3:
+                            Console.Write("Enter New Last Name: ");
+                            contactModel.LastName = Console.ReadLine();
+                            Query = "UPDATE Contacts SET Last_Name = @LastName WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 4:
+                            Console.Write("Enter New Email: ");
+                            contactModel.Email = Console.ReadLine();
+                            Query = "UPDATE Contacts SET Email = @Email WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 5:
+                            Console.Write("Enter New Phone Number: ");
+                            contactModel.PhoneNumber = Console.ReadLine();
+                            Query = "UPDATE Contacts SET Phone_Number = @PhoneNumber WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 6:
+                            Console.Write("Enter New Address: ");
+                            contactModel.Address = Console.ReadLine();
+                            Query = "UPDATE Contacts SET Address = @Address WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 7:
+                            Console.Write("Enter New City: ");
+                            contactModel.City = Console.ReadLine();
+                            Query = "UPDATE Contacts SET City = @City WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 8:
+                            Console.Write("Enter New State: ");
+                            contactModel.State = Console.ReadLine();
+                            Query = "UPDATE Contacts SET State = @State WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 9:
+                            Console.Write("Enter New Zip Code: ");
+                            contactModel.ZipCode = Console.ReadLine();
+                            Query = "UPDATE Contacts SET Zip_Code = @ZipCode WHERE First_Name = @firstName AND Last_Name = @lastName;";
+                            break;
+                        case 0:
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("\nEnter valid option.");
+                            break;
+                    }
+
+                    SqlCommand cmd = new SqlCommand(Query, con);
+
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+
+                    switch (option)
+                    {
+                        case 1:
+                            cmd.Parameters.AddWithValue("@AddressBookName", addressBooksModel.AddressBookName);
+                            break;
+                        case 2:
+                            cmd.Parameters.AddWithValue("@FirstName", contactModel.FirstName);
+                            break;
+                        case 3:
+                            cmd.Parameters.AddWithValue("@LastName", contactModel.LastName);
+                            break;
+                        case 4:
+                            cmd.Parameters.AddWithValue("@Email", contactModel.Email);
+                            break;
+                        case 5:
+                            cmd.Parameters.AddWithValue("@PhoneNumber", contactModel.PhoneNumber);
+                            break;
+                        case 6:
+                            cmd.Parameters.AddWithValue("@Address", contactModel.Address);
+                            break;
+                        case 7:
+                            cmd.Parameters.AddWithValue("@City", contactModel.City);
+                            break;
+                        case 8:
+                            cmd.Parameters.AddWithValue("@State", contactModel.State);
+                            break;
+                        case 9:
+                            cmd.Parameters.AddWithValue("@ZipCode", contactModel.ZipCode);
+                            break;
+                    }
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("{0} row affected.", rowsAffected);
+                    Console.WriteLine("Record Updated Successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
     }
 }

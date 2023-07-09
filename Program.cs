@@ -140,7 +140,7 @@ namespace Address_Book_System
                                 databaseController.InsertNewContact();
                                 break;
                             case 3:
-
+                                databaseController.UpdateRecord();
                                 break;
                             case 0:
                                 Environment.Exit(0);
