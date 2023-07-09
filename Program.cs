@@ -115,7 +115,11 @@ namespace Address_Book_System
 
                     /* Create Address Book table in Database */
 
-                    databaseController.CreateTable_Address_Books();
+                    // databaseController.CreateTable_Address_Books();
+
+                    /* Create Contacts table in Database */
+
+                    databaseController.CreateTable_Contacts();
 
                     break;
                 case 0: 
