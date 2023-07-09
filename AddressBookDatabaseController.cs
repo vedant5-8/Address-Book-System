@@ -443,7 +443,7 @@ namespace Address_Book_System
 
                 int count = (int)cmd.ExecuteScalar();
 
-                Console.WriteLine(count);
+                Console.WriteLine("Total number of contacts present in {0} city are {1}.", contactModel.City, count);
 
                 con.Close();
             }
@@ -474,7 +474,7 @@ namespace Address_Book_System
 
                 int count = (int)cmd.ExecuteScalar();
 
-                Console.WriteLine(count);
+                Console.WriteLine("Total number of contacts present in {0} state are {1}.", contactModel.State, count);
 
                 con.Close();
             }
