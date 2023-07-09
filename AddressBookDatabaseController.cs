@@ -4,6 +4,11 @@ namespace Address_Book_System
 {
     public class AddressBookDatabaseController
     {
+
+        AddressBooks addressBooksModel = new AddressBooks();
+
+        Contact contactModel = new Contact();
+
         // UC1: Create database on MS SQL Server
         public void CreateDatabase()
         {
@@ -84,8 +89,6 @@ namespace Address_Book_System
                 SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
                 con.Open();
 
-                AddressBooks addressBooksModel = new AddressBooks();
-
                 Console.Write("Enter New Address Book Name: ");
                 addressBooksModel.AddressBookName = Console.ReadLine();
 
@@ -113,9 +116,6 @@ namespace Address_Book_System
             {
                 SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
                 con.Open();
-
-                AddressBooks addressBooksModel = new AddressBooks();
-                Contact contactModel = new Contact();
 
                 Console.Write("Enter the name of the address book to which you want to add a new contact: ");
                 addressBooksModel.AddressBookName = Console.ReadLine();
@@ -179,9 +179,6 @@ namespace Address_Book_System
             {
                 SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
                 con.Open();
-
-                AddressBooks addressBooksModel = new AddressBooks();
-                Contact contactModel = new Contact();
 
                 Console.WriteLine("To Edit Records");
                 Console.Write("Enter Your First Name: ");
@@ -308,6 +305,40 @@ namespace Address_Book_System
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
+        }
+
+        // UC7: Delete a contact detail
+
+        public void DeleteRecord()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Console.WriteLine("To Edit Records");
+                Console.Write("Enter Your First Name: ");
+                contactModel.FirstName = Console.ReadLine();
+
+                Console.Write("Enter Your Last Name: ");
+                contactModel.LastName = Console.ReadLine();
+
+                string Query = "DELETE FROM Contacts WHERE First_Name = @FirstName AND Last_Name = @LastName;";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@firstName", contactModel.FirstName);
+                cmd.Parameters.AddWithValue("@lastName", contactModel.LastName);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                Console.WriteLine("{0} row affected.", rowsAffected);
+                Console.WriteLine("Record Deleted Successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
     }
