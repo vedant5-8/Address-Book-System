@@ -134,6 +134,8 @@ namespace Address_Book_System
                         Console.WriteLine("4. Delete a existing contact.");
                         Console.WriteLine("5. Retrieve all contact details.");
                         Console.WriteLine("6. Retrive Records By Range Of Date");
+                        Console.WriteLine("7. Retrive All Records By City");
+                        Console.WriteLine("8. Retrive All Records By State");
                         Console.WriteLine("0. Exit");
                         Console.Write("=> ");
                         option = Convert.ToInt32(Console.ReadLine());
@@ -157,6 +159,12 @@ namespace Address_Book_System
                                 break;
                             case 6:
                                 databaseController.RetriveRecordsByRangeOfDate();
+                                break;
+                            case 7:
+                                databaseController.RetriveAllRecordsByCity();
+                                break;
+                            case 8:
+                                databaseController.RetriveAllRecordsByState();
                                 break;
                             case 0:
                                 Environment.Exit(0);

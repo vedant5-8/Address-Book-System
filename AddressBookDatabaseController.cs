@@ -490,5 +490,136 @@ namespace Address_Book_System
             }
         }
 
+        // UC19: Retrive All Records By City or State name
+        public void RetriveAllRecordsByCity()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Contact contactModel = new Contact();
+
+                Console.WriteLine("Enter City: ");
+                contactModel.City = Console.ReadLine();
+
+                string Query = "SELECT * FROM Contacts WHERE City = @City";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@City", contactModel.City);
+
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
+
+                if (sqlDataReader.HasRows)
+                {
+                    Console.WriteLine("\nRecords Retrived from Database: ");
+
+                    while (sqlDataReader.Read())
+                    {
+                        addressBooksModel.AddressBookName = sqlDataReader.GetString(1);
+                        contactModel.FirstName = sqlDataReader.GetString(2);
+                        contactModel.LastName = sqlDataReader.GetString(3);
+                        contactModel.Email = sqlDataReader.GetString(4);
+                        contactModel.PhoneNumber = sqlDataReader.GetString(5);
+                        contactModel.Address = sqlDataReader.GetString(6);
+                        contactModel.City = sqlDataReader.GetString(7);
+                        contactModel.State = sqlDataReader.GetString(8);
+                        contactModel.ZipCode = sqlDataReader.GetString(9);
+
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("Address Book Name: \"" + addressBooksModel.AddressBookName + "\"");
+                        Console.ResetColor();
+                        Console.WriteLine("Name: {0} {1}", contactModel.FirstName, contactModel.LastName);
+                        Console.WriteLine("Email: " + contactModel.Email);
+                        Console.WriteLine("Phone Number: " + contactModel.PhoneNumber);
+                        Console.WriteLine("Address: " + contactModel.Address);
+                        Console.WriteLine("City: " + contactModel.City);
+                        Console.WriteLine("State: " + contactModel.State);
+                        Console.WriteLine("Zip Code: " + contactModel.ZipCode);
+                        Console.WriteLine();
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Record Not Found in Employee_Payroll Table");
+                }
+
+                sqlDataReader.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        public void RetriveAllRecordsByState()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Contact contactModel = new Contact();
+
+                Console.WriteLine("Enter State: ");
+                contactModel.State = Console.ReadLine();
+
+                string Query = "SELECT * FROM Contacts WHERE State = @State";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@State", contactModel.State);
+
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
+
+                if (sqlDataReader.HasRows)
+                {
+                    Console.WriteLine("\nRecords Retrived from Database: ");
+
+                    while (sqlDataReader.Read())
+                    {
+                        addressBooksModel.AddressBookName = sqlDataReader.GetString(1);
+                        contactModel.FirstName = sqlDataReader.GetString(2);
+                        contactModel.LastName = sqlDataReader.GetString(3);
+                        contactModel.Email = sqlDataReader.GetString(4);
+                        contactModel.PhoneNumber = sqlDataReader.GetString(5);
+                        contactModel.Address = sqlDataReader.GetString(6);
+                        contactModel.City = sqlDataReader.GetString(7);
+                        contactModel.State = sqlDataReader.GetString(8);
+                        contactModel.ZipCode = sqlDataReader.GetString(9);
+
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("Address Book Name: \"" + addressBooksModel.AddressBookName + "\"");
+                        Console.ResetColor();
+                        Console.WriteLine("Name: {0} {1}", contactModel.FirstName, contactModel.LastName);
+                        Console.WriteLine("Email: " + contactModel.Email);
+                        Console.WriteLine("Phone Number: " + contactModel.PhoneNumber);
+                        Console.WriteLine("Address: " + contactModel.Address);
+                        Console.WriteLine("City: " + contactModel.City);
+                        Console.WriteLine("State: " + contactModel.State);
+                        Console.WriteLine("Zip Code: " + contactModel.ZipCode);
+                        Console.WriteLine();
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Record Not Found in Employee_Payroll Table");
+                }
+
+                sqlDataReader.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
     }
 }
