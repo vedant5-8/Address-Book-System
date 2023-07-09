@@ -18,7 +18,7 @@ namespace Address_Book_System
             Console.WriteLine("1. Manage Address Book and Contact Details in List Collection.");
             Console.WriteLine("2. Manage Address Book and Contact Details in MS SQL Server");
             Console.WriteLine("0. Exit");
-            Console.WriteLine("==> ");
+            Console.Write("==> ");
             option = Convert.ToInt32(Console.ReadLine());
 
             switch (option)
@@ -111,7 +111,11 @@ namespace Address_Book_System
 
                     /* Create database in MS SQL Server */
 
-                    databaseController.CreateDatabase();
+                    // databaseController.CreateDatabase();
+
+                    /* Create Address Book table in Database */
+
+                    databaseController.CreateTable_Address_Books();
 
                     break;
                 case 0: 
