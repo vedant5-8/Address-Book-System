@@ -132,14 +132,15 @@ namespace Address_Book_System
                         Console.WriteLine("2. Insert new Contact Details in Contacts table.");
                         Console.WriteLine("3. Update existing contact details.");
                         Console.WriteLine("4. Delete a existing contact.");
-                        Console.WriteLine("5. Retrieve all contact details.");
-                        Console.WriteLine("6. Retrive Records By Range Of Date");
-                        Console.WriteLine("7. Retrive All Records By City");
-                        Console.WriteLine("8. Retrive All Records By State");
-                        Console.WriteLine("9. Insert one contact in multiple address books");
-                        Console.WriteLine("10. Count records by City");
-                        Console.WriteLine("11. Count records by State");
-                        Console.WriteLine("12. Retrive All Records Order By Name");
+                        Console.WriteLine("5. Retrieve all Address Books");
+                        Console.WriteLine("6. Retrieve all contact details.");
+                        Console.WriteLine("7. Retrive Records By Range Of Date");
+                        Console.WriteLine("8. Retrive All Records By City");
+                        Console.WriteLine("9. Retrive All Records By State");
+                        Console.WriteLine("10. Insert one contact in multiple address books");
+                        Console.WriteLine("11. Count records by City");
+                        Console.WriteLine("12. Count records by State");
+                        Console.WriteLine("13. Retrive All Records Order By Name");
                         Console.WriteLine("0. Exit");
                         Console.Write("=> ");
                         option = Convert.ToInt32(Console.ReadLine());
@@ -159,27 +160,30 @@ namespace Address_Book_System
                                 databaseController.DeleteRecord();
                                 break;
                             case 5:
-                                databaseController.RetriveAllRecords();
+                                databaseController.RetriveAllAddressBookName(); 
                                 break;
                             case 6:
-                                databaseController.RetriveRecordsByRangeOfDate();
+                                databaseController.RetriveAllRecords();
                                 break;
                             case 7:
-                                databaseController.RetriveAllRecordsByCity();
+                                databaseController.RetriveRecordsByRangeOfDate();
                                 break;
                             case 8:
-                                databaseController.RetriveAllRecordsByState();
+                                databaseController.RetriveAllRecordsByCity();
                                 break;
                             case 9:
-                                databaseController.InsertContactInMultipleAddressBook();
+                                databaseController.RetriveAllRecordsByState();
                                 break;
                             case 10:
-                                databaseController.CountContactsByCity();
+                                databaseController.InsertContactInMultipleAddressBook();
                                 break;
                             case 11:
-                                databaseController.CountContactsByState();
+                                databaseController.CountContactsByCity();
                                 break;
                             case 12:
+                                databaseController.CountContactsByState();
+                                break;
+                            case 13:
                                 databaseController.RetriveAllRecordsOrderByName();
                                 break;
                             case 0:

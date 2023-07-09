@@ -545,6 +545,51 @@ namespace Address_Book_System
             }
         }
 
+        // UC11: Retrive All Address Book Name
+
+        public void RetriveAllAddressBookName()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                AddressBooks addressBooksModel = new AddressBooks();
+
+                string Query = "SELECT * FROM Address_Books;";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
+
+                if (sqlDataReader.HasRows)
+                {
+                    Console.WriteLine("\nRecords Retrived from Database: ");
+                    Console.WriteLine("\nAddress Books: ");
+
+                    while (sqlDataReader.Read())
+                    {
+                        addressBooksModel.AddressBookName = sqlDataReader.GetString(0);
+
+                        Console.WriteLine(addressBooksModel.AddressBookName);
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Record Not Found in Address_Books Table");
+                }
+
+                sqlDataReader.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
         // UC18: Retrive Records By Range Of Date
         public void RetriveRecordsByRangeOfDate()
         {
