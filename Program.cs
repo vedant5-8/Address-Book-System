@@ -119,9 +119,30 @@ namespace Address_Book_System
 
                     /* Create Contacts table in Database */
 
-                    databaseController.CreateTable_Contacts();
+                    // databaseController.CreateTable_Contacts();
 
-                    break;
+                    while (true)
+                    {
+                        Console.WriteLine("\nSelect an option: ");
+                        Console.WriteLine("1. Insert new address book in Address Book table.");
+                        Console.WriteLine("0. Exit");
+                        Console.Write("=> ");
+                        option = Convert.ToInt32(Console.ReadLine());
+
+                        switch (option)
+                        {
+                            case 1:
+                                databaseController.InsertNewAddressBook();
+                                break;
+                            case 0:
+                                Environment.Exit(0);
+                                break;
+                            default:
+                                Console.WriteLine("Enter valid option.");
+                                break;
+                        }
+                    }
+
                 case 0: 
                     Environment.Exit(0);
                     break;

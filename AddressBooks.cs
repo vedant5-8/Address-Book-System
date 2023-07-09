@@ -9,6 +9,8 @@ namespace Address_Book_System
         public string AddressBookName { get; set; }
         public List<Contact> Contacts { get; set; }
 
+        public AddressBooks() {}
+
         public AddressBooks(string addressBookName)
         {
             AddressBookName = addressBookName;

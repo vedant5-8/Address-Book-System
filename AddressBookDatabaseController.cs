@@ -75,5 +75,36 @@ namespace Address_Book_System
             }
         }
 
+        // UC4: Insert new address books in Address Book table
+
+        public void InsertNewAddressBook()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                AddressBooks addressBooksModel = new AddressBooks();
+
+                Console.Write("Enter New Address Book Name: ");
+                addressBooksModel.AddressBookName = Console.ReadLine();
+
+                string Query = "INSERT INTO Address_Books VALUES (@AddressBookName);";
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                cmd.Parameters.AddWithValue("@AddressBookName", addressBooksModel.AddressBookName);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                Console.WriteLine("{0} row affected.", rowsAffected);
+                Console.WriteLine("Record Inserted Successfully.");
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

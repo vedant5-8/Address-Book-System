@@ -12,6 +12,8 @@ namespace Address_Book_System
         public string State { get; set; }
         public string ZipCode { get; set; }
 
+        public Contact() { }
+
         public Contact(string firstName, string lastName, string email, string phoneNumber, string address, string city, string state, string zipCode)
         {
             FirstName = firstName;
