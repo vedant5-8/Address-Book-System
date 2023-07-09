@@ -68,20 +68,5 @@
         "ZipCode": "302010"
       }
     ]
-  },
-  {
-    "AddressBookName": "Friends",
-    "Contacts": [
-      {
-        "FirstName": "Manish",
-        "LastName": "Patil",
-        "Email": "manish@gmail.com",
-        "PhoneNumber": "7744935632",
-        "Address": "Vashi",
-        "City": "Navi Mumbai",
-        "State": "Maharashtra",
-        "ZipCode": "400703"
-      }
-    ]
   }
 ]
