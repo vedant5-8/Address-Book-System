@@ -166,6 +166,9 @@ namespace Address_Book_System
                             case 8:
                                 databaseController.RetriveAllRecordsByState();
                                 break;
+                            case 9:
+                                databaseController.InsertContactInMultipleAddressBook();
+                                break;
                             case 0:
                                 Environment.Exit(0);
                                 break;

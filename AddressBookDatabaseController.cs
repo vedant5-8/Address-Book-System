@@ -621,5 +621,83 @@ namespace Address_Book_System
             }
         }
 
+        // UC20: Insert Contact In Multiple Address Book
+        public void InsertContactInMultipleAddressBook()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"data source=DESKTOP-4VPJFH9\SQLEXPRESS;initial catalog=Address_Book_Service_C_Sharp;integrated security=true");
+                con.Open();
+
+                Console.Write("How many address books do you want to save a contact?\n=> ");
+                int n = Convert.ToInt32(Console.ReadLine());
+
+                List<string> AddressBookNames = new List<string>();
+
+                for (int i = 0; i < n; i++)
+                {
+                    Console.Write("Enter name of address book {0}: ", i + 1);
+                    AddressBookNames.Add(Console.ReadLine());
+                }
+
+                Console.WriteLine("Enter contact Details: \n");
+
+                Console.WriteLine("Enter Your First Name");
+                string First_Name = Console.ReadLine();
+
+                Console.WriteLine("Enter Your Last Name: ");
+                string Last_Name = Console.ReadLine();
+
+                Console.WriteLine("Enter Your Email: ");
+                string Email = Console.ReadLine();
+
+                Console.WriteLine("Enter Your Phone Number: ");
+                string Phone_Number = Console.ReadLine();
+
+                Console.WriteLine("Enter Your Address: ");
+                string Address = Console.ReadLine();
+
+                Console.WriteLine("Enter Your City: ");
+                string City = Console.ReadLine();
+
+                Console.WriteLine("Enter Your State: ");
+                string State = Console.ReadLine();
+
+                Console.WriteLine("Enter Your Zip Code: ");
+                string Zip_Code = Console.ReadLine();
+
+                string Query = string.Empty;
+
+                for (int i = 0; i < n; i++)
+                {
+                    Query += "INSERT INTO Contacts VALUES (@AddressBookName" + i + ", @First_Name, @Last_Name, @Email, @Phone_Number, @Address, @City, @State, @Zip_Code);";
+                }
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                for (int i = 0; i < n; i++)
+                {
+                    cmd.Parameters.AddWithValue("@AddressBookName" + i, AddressBookNames[i]);
+                }
+
+                cmd.Parameters.AddWithValue("@First_Name", First_Name);
+                cmd.Parameters.AddWithValue("@Last_Name", Last_Name);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@Phone_Number", Phone_Number);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@City", City);
+                cmd.Parameters.AddWithValue("@State", State);
+                cmd.Parameters.AddWithValue("@Zip_Code", Zip_Code);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                Console.WriteLine("{0} rows are inserted.", rowsAffected);
+                Console.WriteLine("Record Inserted Successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
