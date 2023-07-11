@@ -1,7 +1,4 @@
 ﻿
-using static System.Net.Mime.MediaTypeNames;
-using System.Net;
-
 namespace Address_Book_System
 {
     class Program
@@ -16,7 +13,8 @@ namespace Address_Book_System
 
             Console.WriteLine("\nSelect an option: ");
             Console.WriteLine("1. Manage Address Book and Contact Details in List Collection.");
-            Console.WriteLine("2. Manage Address Book and Contact Details in MS SQL Server");
+            Console.WriteLine("2. Manage Address Book and Contact Details in MS SQL Server.");
+            Console.WriteLine("3. Manage Address Book and Contact Details using Multithreading.");
             Console.WriteLine("0. Exit");
             Console.Write("==> ");
             option = Convert.ToInt32(Console.ReadLine());
@@ -198,7 +196,31 @@ namespace Address_Book_System
                                 break;
                         }
                     }
+                case 3:
+                    ThreadController threadController = new ThreadController();
 
+                    List<AddressBooksModel> addressBooksList = new List<AddressBooksModel>();
+                    List<ContactModel> contactList = new List<ContactModel>();
+
+                    // Add multiple AddressBooks and Contacts to the lists
+                    addressBooksList.Add(new AddressBooksModel { AddressBookName = "Book 1" });
+                    addressBooksList.Add(new AddressBooksModel { AddressBookName = "Book 2" });
+
+                    contactList.Add(new ContactModel { AddressBookName = "Book 1", FirstName = "John", LastName = "Doe", Email = "john.doe@example.com", PhoneNumber = "1234567890", Address = "123 Main St", City = "Mumbai", State = "Maharashtra", ZipCode = "400001" });
+                    contactList.Add(new ContactModel { AddressBookName = "Book 2", FirstName = "Jane", LastName = "Doe", Email = "jane.doe@example.com", PhoneNumber = "0987654321", Address = "456 Main St", City = "Mumbai", State = "Maharashtra", ZipCode = "400001" });
+
+                    foreach (AddressBooksModel addressBooksModel in addressBooksList)
+                    {
+                        Thread thread1 = new Thread(() => threadController.InsertNewAddressBook(addressBooksModel));
+                        thread1.Start();
+                    }
+
+                    foreach (ContactModel contactModel in contactList)
+                    {
+                        Thread thread2 = new Thread(() => threadController.InsertNewContact(addressBooksList[0], contactModel));
+                        thread2.Start();
+                    }
+                    break;
                 case 0: 
                     Environment.Exit(0);
                     break;
