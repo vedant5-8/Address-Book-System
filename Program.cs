@@ -1,4 +1,6 @@
 ﻿
+using RestSharp;
+
 namespace Address_Book_System
 {
     class Program
@@ -15,6 +17,7 @@ namespace Address_Book_System
             Console.WriteLine("1. Manage Address Book and Contact Details in List Collection.");
             Console.WriteLine("2. Manage Address Book and Contact Details in MS SQL Server.");
             Console.WriteLine("3. Manage Address Book and Contact Details using Multithreading.");
+            Console.WriteLine("4. Manage Address Book and Contact Details using JSON Server");
             Console.WriteLine("0. Exit");
             Console.Write("==> ");
             option = Convert.ToInt32(Console.ReadLine());
@@ -220,6 +223,45 @@ namespace Address_Book_System
                         Thread thread2 = new Thread(() => threadController.InsertNewContact(addressBooksList[0], contactModel));
                         thread2.Start();
                     }
+                    break;
+                case 4:
+
+                    AddressBookJSONController jSONController = new AddressBookJSONController();
+
+                    while (true)
+                    {
+                        Console.WriteLine("\nSelect an option: ");
+                        Console.WriteLine("1. Insert new contacts.");
+                        Console.WriteLine("2. Display Contacts");
+                        Console.WriteLine("3. Update Existing contacts.");
+                        Console.WriteLine("4. Delete Contact");
+                        Console.WriteLine("0. Exit");
+                        Console.Write("=> ");
+                        option = Convert.ToInt32(Console.ReadLine());
+
+                        switch (option)
+                        {
+                            case 1:
+                                jSONController.AddContact();
+                                break;
+                            case 2:
+                                jSONController.DisplayContacts();
+                                break;
+                            case 3:
+                                jSONController.UpdateContact();
+                                break;
+                            case 4:
+                                jSONController.DeleteContact();
+                                break;
+                            case 0:
+                                Environment.Exit(0);
+                                break;
+                            default:
+                                Console.WriteLine("Enter valid option.");
+                                break;
+                        }
+                    }
+
                     break;
                 case 0: 
                     Environment.Exit(0);

@@ -1,0 +1,48 @@
+{
+  "Contacts": [
+    {
+      "FirstName": "Manish",
+      "LastName": "Patil",
+      "Email": "manishpatil@gmail.com",
+      "PhoneNumber": "9510036854",
+      "Address": "Hashiware",
+      "City": "Alibag",
+      "State": "Maharashtra",
+      "ZipCode": "402209",
+      "id": 1
+    },
+    {
+      "FirstName": "Sumit",
+      "LastName": "Patil",
+      "Email": "sumitpatil@gmail.com",
+      "PhoneNumber": "9632587410",
+      "Address": "Hashiware",
+      "City": "Alibag",
+      "State": "Maharashtra",
+      "ZipCode": "402209",
+      "id": 2
+    },
+    {
+      "FirstName": "Raj",
+      "LastName": "Patil",
+      "Email": "raj@gmail.com",
+      "PhoneNumber": "7458966321",
+      "Address": "Chinchwali",
+      "City": "Alibag",
+      "State": "Maharashtra",
+      "ZipCode": "402209",
+      "id": 4
+    },
+    {
+      "FirstName": "Shubham",
+      "LastName": "Patil",
+      "Email": "shubham123@gmail.com",
+      "PhoneNumber": "9876543012",
+      "Address": "Hashiware",
+      "City": "Alibag",
+      "State": "Maharashtra",
+      "ZipCode": "402209",
+      "id": 5
+    }
+  ]
+}
